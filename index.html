@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio Digital | Servicios Tecnológicos</title>
+<script src="https://cdn.tailwindcss.com/3.4.16">
+</script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { primary: "#6B46C1", secondary: "#805AD5" },
+      borderRadius: {
+        none: "0px",
+        sm: "4px",
+        DEFAULT: "8px",
+        md: "12px",
+        lg: "16px",
+        xl: "20px",
+        "2xl": "24px",
+        "3xl": "32px",
+        full: "9999px",
+        button: "8px",
+      },
+    },
+  },
+};
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+scroll-behavior: smooth;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Poppins', sans-serif;
+}
+.hero-bg {
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+}
+.particles {
+position: absolute;
+width: 100%;
+height: 100%;
+z-index: 0;
+overflow: hidden;
+}
+.particle {
+position: absolute;
+border-radius: 50%;
+background-color: rgba(107, 70, 193, 0.2);
+animation: float 15s infinite ease-in-out;
+}
+@keyframes float {
+0%, 100% {
+transform: translateY(100vh) translateX(0);
+opacity: 0;
+}
+50% {
+opacity: 1;
+}
+99% {
+transform: translateY(-20px) translateX(0);
+opacity: 0;
+}
+}
+.service-card {
+transition: transform 0.3s, box-shadow 0.3s;
+}
+.service-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px -5px rgba(107, 70, 193, 0.3);
+}
+.project-card {
+transition: transform 0.3s, box-shadow 0.3s;
+}
+.project-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px -5px rgba(107, 70, 193, 0.3);
+}
+.shine {
+position: relative;
+overflow: hidden;
+}
+.shine::after {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: linear-gradient(
+to right,
+rgba(255, 255, 255, 0) 0%,
+rgba(255, 255, 255, 0.3) 50%,
+rgba(255, 255, 255, 0) 100%
+);
+transform: rotate(30deg);
+animation: shine 5s infinite;
+}
+@keyframes shine {
+0% {
+transform: rotate(30deg) translateX(-100%);
+}
+20%, 100% {
+transform: rotate(30deg) translateX(100%);
+}
+}
+.scroll-indicator {
+animation: bounce 2s infinite;
+}
+@keyframes bounce {
+0%, 20%, 50%, 80%, 100% {
+transform: translateY(0);
+}
+40% {
+transform: translateY(-10px);
+}
+60% {
+transform: translateY(-5px);
+}
+}
+input:focus, textarea:focus, select:focus {
+outline: none;
+border-color: #6B46C1;
+box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.2);
+}
+.custom-checkbox {
+appearance: none;
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #6B46C1;
+border-radius: 4px;
+outline: none;
+cursor: pointer;
+position: relative;
+transition: background-color 0.2s;
+}
+.custom-checkbox:checked {
+background-color: #6B46C1;
+}
+.custom-checkbox:checked::after {
+content: '';
+position: absolute;
+top: 2px;
+left: 6px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.toggle-switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.toggle-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.toggle-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 24px;
+}
+.toggle-slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .toggle-slider {
+background-color: #6B46C1;
+}
+input:checked + .toggle-slider:before {
+transform: translateX(26px);
+}
+.reveal {
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 0.5s, transform 0.5s;
+}
+.reveal.active {
+opacity: 1;
+transform: translateY(0);
+}
+</style>
+</head>
+<body class="bg-gray-50">
+
+<!-- Header y Navegación -->
+
+<header class="fixed w-full z-50 bg-white bg-opacity-90 backdrop-blur-sm shadow-sm">
+<div class="container mx-auto px-4 py-3 flex justify-center items-center">
+<nav class="hidden md:flex space-x-12">
+<a href="#inicio" class="font-medium text-gray-700 hover:text-primary transition-colors">Inicio</a>
+<a href="#sobre-mi" class="font-medium text-gray-700 hover:text-primary transition-colors">Sobre mí</a>
+<a href="#servicios" class="font-medium text-gray-700 hover:text-primary transition-colors">Servicios</a>
+<a href="#proyectos" class="font-medium text-gray-700 hover:text-primary transition-colors">Proyectos</a>
+<a href="#contacto" class="font-medium text-gray-700 hover:text-primary transition-colors">Contacto</a>
+</nav>
+<button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700" id="mobile-menu-button">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+
+<!-- Menú móvil -->
+<div class="md:hidden hidden bg-white w-full absolute top-full left-0 shadow-md" id="mobile-menu">
+<div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+<a href="#inicio" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">Inicio</a>
+<a href="#sobre-mi" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">Sobre mí</a>
+<a href="#servicios" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">Servicios</a>
+<a href="#proyectos" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">Proyectos</a>
+<a href="#contacto" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">Contacto</a>
+</div>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section id="inicio" class="min-h-screen flex items-center relative overflow-hidden hero-bg" style="background-image: url('https://readdy.ai/api/search-image?query=futuristic%20digital%20technology%20background%20with%20glowing%20circuit%20patterns%20and%20data%20streams%2C%20cyberpunk%20style%20with%20purple%20and%20blue%20neon%20lights%2C%20abstract%20tech%20grid%20with%20flowing%20energy%20lines%2C%20high-tech%20digital%20landscape%20with%20geometric%20elements%20and%20light%20trails&width=1920&height=1080&seq=hero1&orientation=landscape')">
+<div class="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-transparent"></div>
+<div class="particles">
+<div class="particle" style="width: 2px; height: 100px; top: 10%; left: 10%; animation-delay: 0s; background: linear-gradient(to bottom, rgba(107, 70, 193, 0.2), transparent);"></div>
+<div class="particle" style="width: 2px; height: 80px; top: 20%; left: 30%; animation-delay: 1s; background: linear-gradient(to bottom, rgba(107, 70, 193, 0.2), transparent);"></div>
+<div class="particle" style="width: 2px; height: 120px; top: 15%; left: 50%; animation-delay: 2s; background: linear-gradient(to bottom, rgba(107, 70, 193, 0.2), transparent);"></div>
+<div class="particle" style="width: 2px; height: 90px; top: 25%; left: 70%; animation-delay: 3s; background: linear-gradient(to bottom, rgba(107, 70, 193, 0.2), transparent);"></div>
+<div class="particle" style="width: 2px; height: 110px; top: 18%; left: 90%; animation-delay: 4s; background: linear-gradient(to bottom, rgba(107, 70, 193, 0.2), transparent);"></div>
+</div>
+<div class="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center justify-between relative z-10">
+<div class="md:w-1/2 mb-12 md:mb-0 reveal">
+<div class="inline-block bg-primary/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+<span class="text-primary font-medium">Portafolio Digital 2025</span>
+</div>
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
+Rapidas y Seguras  <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400">Soluciones Digital</span>
+</h1>
+<p class="text-lg md:text-xl text-gray-300 mb-8">
+Apoyamos a tu empresa, no importa si vas empezando.
+</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="#servicios" class="group bg-primary hover:bg-purple-700 text-white font-medium py-3 px-6 !rounded-button shadow-lg hover:shadow-xl transition-all whitespace-nowrap flex items-center gap-2">
+<span>Explorar Servicios</span>
+<i class="ri-arrow-right-line transition-transform group-hover:translate-x-1"></i>
+</a>
+<a href="#contacto" class="group bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium py-3 px-6 !rounded-button shadow-md hover:shadow-lg transition-all whitespace-nowrap flex items-center gap-2">
+<span>Iniciar Proyecto</span>
+<i class="ri-rocket-line transition-transform group-hover:translate-x-1"></i>
+</a>
+</div>
+<div class="flex items-center gap-6 mt-12">
+<div class="flex -space-x-4">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20young%20business%20person%2C%20high%20quality%20portrait%20with%20neutral%20background&width=100&height=100&seq=client1&orientation=squarish" alt="Cliente" class="w-10 h-10 rounded-full border-2 border-white">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20middle%20aged%20business%20woman%2C%20high%20quality%20portrait%20with%20neutral%20background&width=100&height=100&seq=client2&orientation=squarish" alt="Cliente" class="w-10 h-10 rounded-full border-2 border-white">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20mature%20business%20man%2C%20high%20quality%20portrait%20with%20neutral%20background&width=100&height=100&seq=client3&orientation=squarish" alt="Cliente" class="w-10 h-10 rounded-full border-2 border-white">
+</div>
+<div class="text-white">
+<div class="font-semibold">Clientes Satisfechos</div>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 flex justify-center reveal">
+<div class="relative">
+<div class="absolute -inset-4 bg-gradient-to-r from-primary to-purple-500 rounded-xl opacity-30 blur-xl"></div>
+<img src="/Users/angelhc/Desktop/DigitalSolutions/Portafolio/Resources/PP.png" alt="Tecnología Digital" class="relative w-full max-w-md rounded-xl shadow-2xl">
+<div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-white/10 backdrop-blur-sm rounded-2xl p-4 flex items-center gap-4 border border-white/20">
+<div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
+<i class="ri-code-line text-white text-2xl"></i>
+</div>
+<div class="text-Black">
+<div class="font-semibold">Cuento con APIS y Recursos</div>
+<div class="text-sm text-Black-300">WhastApp Api, Hosting</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+<a href="#sobre-mi" class="w-10 h-10 flex items-center justify-center text-primary">
+<i class="ri-arrow-down-line ri-xl"></i>
+</a>
+</div>
+</section>
+
+<!-- Sobre Mí -->
+<section id="sobre-mi" class="py-20 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16 reveal">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Sobre Mí</h2>
+<div class="w-20 h-1 bg-primary mx-auto"></div>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-12">
+<div class="md:w-2/5 reveal">
+<img src="/Users/angelhc/Desktop/DigitalSolutions/Portafolio/Resources/PB.png" alt="Perfil Profesional" class="w-full rounded-xl shadow-xl">
+</div>
+<div class="md:w-3/5 reveal">
+<h3 class="text-2xl font-semibold text-gray-800 mb-4">Angel Cruz | FreeLance Autonomo</h3>
+<p class="text-gray-600 mb-6">
+Con más de 10 años de experiencia en el mundo digital, me especializo en crear soluciones tecnológicas que combinan diseño atractivo y funcionalidad impecable. Mi pasión es transformar ideas complejas en experiencias digitales intuitivas y efectivas, apoyando asi a personas que no tienen mucho conocimiento de la facilidad de las tecnologias.
+</p>
+<p class="text-gray-600 mb-8">
+Mi enfoque se centra en entender las necesidades específicas de cada cliente para ofrecer soluciones personalizadas que impulsen su presencia digital y automaticen procesos para mejorar su eficiencia.
+</p>
+</p>
+<p class="text-gray-600 mb-8">
+Comenze un proyecto con colegas y creamos @Digital Solutions, donde la gente puede venir con sus ideales y nosotros nos encargaremos de hacerlas realidad.
+</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+<div class="bg-gray-50 p-4 rounded-lg text-center">
+<div class="text-primary text-2xl font-bold">10+</div>
+<div class="text-gray-600 text-sm">Años de Experiencia</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg text-center">
+<div class="text-primary text-2xl font-bold">20+</div>
+<div class="text-gray-600 text-sm">Proyectos Completados</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg text-center">
+<div class="text-primary text-2xl font-bold">100%</div>
+<div class="text-gray-600 text-sm">Clientes Satisfechos</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg text-center">
+<div class="text-primary text-2xl font-bold">24/7</div>
+<div class="text-gray-600 text-sm">Soporte Disponible</div>
+</div>
+</div>
+<h4 class="text-xl font-semibold text-gray-800 mb-4">Habilidades Técnicas</h4>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-html5-line ri-lg"></i>
+</div>
+<span class="text-gray-700">HTML5 & CSS3</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-javascript-line ri-lg"></i>
+</div>
+<span class="text-gray-700">JavaScript</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-reactjs-line ri-lg"></i>
+</div>
+<span class="text-gray-700">React & Next.js</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-palette-line ri-lg"></i>
+</div>
+<span class="text-gray-700">Diseño UI/UX</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-server-line ri-lg"></i>
+</div>
+<span class="text-gray-700">Hosting & Dominios</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-robot-line ri-lg"></i>
+</div>
+<span class="text-gray-700">IA & Automatización</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Servicios -->
+<section id="servicios" class="py-20 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16 reveal">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Mis Servicios</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">
+Ofrezco soluciones digitales completas para potenciar tu presencia online y optimizar tus procesos de negocio.
+</p>
+<div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    
+<!-- Servicio 1 -->
+<div class="bg-white rounded-xl shadow-lg p-6 service-card reveal">
+<div class="w-16 h-16 flex items-center justify-center bg-purple-100 rounded-full mb-6 mx-auto">
+<i class="ri-palette-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">Diseño Digital</h3>
+<p class="text-gray-600 mb-6 text-center">
+Creación de identidades visuales, interfaces de usuario atractivas y materiales gráficos profesionales.
+</p>
+<ul class="text-gray-600 mb-6 space-y-2">
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>Diseño de logotipos e identidad</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>Interfaces de usuario (UI)</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>Material gráfico para redes</span>
+</li>
+</ul>
+<a href="#contacto" class="block text-center bg-white border border-primary text-primary hover:bg-primary hover:text-white font-medium py-2 px-4 !rounded-button transition-colors whitespace-nowrap">
+Saber más
+</a>
+</div>
+<!-- Servicio 2 -->
+<div class="bg-white rounded-xl shadow-lg p-6 service-card reveal">
+<div class="w-16 h-16 flex items-center justify-center bg-purple-100 rounded-full mb-6 mx-auto">
+<i class="ri-code-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">Sitios Web y Hosting</h3>
+<p class="text-gray-600 mb-6 text-center">
+Desarrollo de sitios web profesionales, optimizados y con soluciones de alojamiento seguras.
+</p>
+<ul class="text-gray-600 mb-6 space-y-2">
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>Sitios web responsivos</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>E-commerce y tiendas online</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>Hosting y dominios personalizados</span>
+</li>
+</ul>
+<a href="#contacto" class="block text-center bg-white border border-primary text-primary hover:bg-primary hover:text-white font-medium py-2 px-4 !rounded-button transition-colors whitespace-nowrap">
+Saber más
+</a>
+</div>
+<!-- Servicio 3 -->
+<div class="bg-white rounded-xl shadow-lg p-6 service-card reveal">
+<div class="w-16 h-16 flex items-center justify-center bg-purple-100 rounded-full mb-6 mx-auto">
+<i class="ri-robot-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">Automatizaciones</h3>
+<p class="text-gray-600 mb-6 text-center">
+Optimización de procesos mediante automatizaciones inteligentes para redes sociales y tareas repetitivas.
+</p>
+<ul class="text-gray-600 mb-6 space-y-2">
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>Publicación automática en redes</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>Respuestas automáticas</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>Integración entre plataformas</span>
+</li>
+</ul>
+<a href="#contacto" class="block text-center bg-white border border-primary text-primary hover:bg-primary hover:text-white font-medium py-2 px-4 !rounded-button transition-colors whitespace-nowrap">
+Saber más
+</a>
+</div>
+<!-- Servicio 4 -->
+<div class="bg-white rounded-xl shadow-lg p-6 service-card reveal">
+<div class="w-16 h-16 flex items-center justify-center bg-purple-100 rounded-full mb-6 mx-auto">
+<i class="ri-ai-generate ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 mb-3 text-center">Agentes Virtuales</h3>
+<p class="text-gray-600 mb-6 text-center">
+Implementación de asistentes virtuales inteligentes para atención al cliente y automatización de consultas.
+</p>
+<ul class="text-gray-600 mb-6 space-y-2">
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>Chatbots personalizados</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>Asistentes con IA</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>Integración con WhatsApp y web</span>
+</li>
+</ul>
+<a href="#contacto" class="block text-center bg-white border border-primary text-primary hover:bg-primary hover:text-white font-medium py-2 px-4 !rounded-button transition-colors whitespace-nowrap">
+Saber más
+</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Proyectos -->
+<section id="proyectos" class="py-20 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16 reveal">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Trabajos Recientes</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">
+Explora algunos de mis trabajos más destacados y descubre cómo puedo ayudarte a alcanzar tus objetivos digitales.
+</p>
+<div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+</div>
+<div class="flex justify-center mb-8 reveal">
+<div class="inline-flex bg-gray-100 p-1 rounded-full">
+<button class="project-filter active py-2 px-4 rounded-full bg-primary text-white font-medium whitespace-nowrap" data-filter="all">Todos</button>
+<button class="project-filter py-2 px-4 rounded-full text-gray-700 font-medium whitespace-nowrap" data-filter="web">Sitios Web</button>
+<button class="project-filter py-2 px-4 rounded-full text-gray-700 font-medium whitespace-nowrap" data-filter="diseño">Diseño</button>
+<button class="project-filter py-2 px-4 rounded-full text-gray-700 font-medium whitespace-nowrap" data-filter="auto">Automatización</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    
+<!-- Proyecto 1 -->
+<div class="project-card rounded-xl overflow-hidden shadow-lg reveal" data-category="web">
+<div class="relative overflow-hidden h-64">
+<img src="/Users/angelhc/Desktop/DigitalSolutions/Portafolio/Resources/1.png"
+    alt="Sitio WEB | Digital Solutions" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-110">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end">
+<div class="p-6">
+<h3 class="text-xl font-semibold text-white mb-2">Sitio WEB | Digital Solutions</h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-primary/20 text-white text-xs py-1 px-2 rounded">Html</span>
+<span class="bg-primary/20 text-white text-xs py-1 px-2 rounded">Tailwind</span>
+<span class="bg-primary/20 text-white text-xs py-1 px-2 rounded">CSS</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Proyecto 2 -->
+<div class="project-card rounded-xl overflow-hidden shadow-lg reveal" data-category="diseño">
+<div class="relative overflow-hidden h-64">
+<img src="/Users/angelhc/Desktop/DigitalSolutions/Portafolio/Resources/2.png"
+    alt="Identidad de Marca" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-110">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end">
+<div class="p-6">
+<h3 class="text-xl font-semibold text-white mb-2">Diseño Digital</h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-primary/20 text-white text-xs py-1 px-2 rounded">Redes Sociales</span>
+<span class="bg-primary/20 text-white text-xs py-1 px-2 rounded">Promociones</span>
+<span class="bg-primary/20 text-white text-xs py-1 px-2 rounded">Menus</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Proyecto 3 -->
+<div class="project-card rounded-xl overflow-hidden shadow-lg reveal" data-category="diseño">
+<div class="relative overflow-hidden h-64">
+<img src="/Users/angelhc/Desktop/DigitalSolutions/Portafolio/Resources/3.png"
+    alt="Identidad de Marca" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-110">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end">
+<div class="p-6">
+<h3 class="text-xl font-semibold text-white mb-2">Identidad de Marca</h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-primary/20 text-white text-xs py-1 px-2 rounded">Branding</span>
+<span class="bg-primary/20 text-white text-xs py-1 px-2 rounded">Logo</span>
+<span class="bg-primary/20 text-white text-xs py-1 px-2 rounded">Identidad</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Proyecto 4 -->
+
+<div class="project-card rounded-xl overflow-hidden shadow-lg reveal" data-category="diseño">
+<div class="relative overflow-hidden h-64">
+<img src="/Users/angelhc/Desktop/DigitalSolutions/Portafolio/Resources/4.png"
+    alt="Automatización de Redes" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-110">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end">
+<div class="p-6">
+<h3 class="text-xl font-semibold text-white mb-2">Rebranding de Logo</h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-primary/20 text-white text-xs py-1 px-2 rounded">Branding</span>
+<span class="bg-primary/20 text-white text-xs py-1 px-2 rounded">Logo</span>
+<span class="bg-primary/20 text-white text-xs py-1 px-2 rounded">Diseño</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center mt-12 reveal">
+<a href="#contacto" class="inline-block bg-primary hover:bg-purple-700 text-white font-medium py-3 px-8 !rounded-button shadow-lg hover:shadow-xl transition-all whitespace-nowrap">
+Solicitar un Proyecto
+</a>
+</div>
+</div>
+</section>
+
+<!-- Promoción Especial -->
+<section class="py-16 bg-gray-50 overflow-hidden">
+<div class="container mx-auto px-4">
+<div class="relative bg-gradient-to-r from-primary to-purple-500 rounded-2xl p-8 md:p-12 shadow-xl shine reveal">
+<div class="flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="md:w-3/5">
+<h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Oferta Especial de Temporada</h2>
+<p class="text-white/90 mb-6">
+Obtén un Asistente Virutal por solo $690 Mensuales, Sin pago Inicial, hasta acabar cupos. ¡No pierdas esta oportunidad única!
+</p>
+<div class="bg-white/20 backdrop-blur-sm rounded-lg p-4 mb-6 inline-block">
+<div class="flex items-center gap-3">
+<span class="text-white font-bold">Código:</span>
+<span class="bg-white text-primary font-mono font-bold py-2 px-4 rounded" id="promo-code">AsistenteDS</span>
+<button class="w-8 h-8 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-full text-white transition-colors" id="copy-code">
+<i class="ri-clipboard-line"></i>
+</button>
+</div>
+</div>
+<div class="flex flex-wrap gap-4">
+<a href="#contacto" class="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-6 !rounded-button shadow-lg hover:shadow-xl transition-all whitespace-nowrap">
+Solicitar Ahora
+</a>
+<a href="https://wa.me/message/EGRGU34QD263J1" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 !rounded-button shadow-lg hover:shadow-xl transition-all flex items-center gap-2 whitespace-nowrap">
+<i class="ri-whatsapp-line"></i>
+<span>WhatsApp</span>
+</a>
+</div>
+</div>
+<div class="md:w-2/5">
+<div class="relative">
+<div
+</div>
+<img src="/Users/angelhc/Desktop/DigitalSolutions/Portafolio/Resources/Promocion.png"
+    alt="Promoción Especial" class="w-full rounded-xl shadow-xl">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contacto -->
+<section id="contacto" class="py-20 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16 reveal">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Contáctame</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">
+¿Tienes un proyecto en mente? Estoy aquí para ayudarte a hacerlo realidad. Completa el formulario y me pondré en contacto contigo lo antes posible.
+</p>
+<div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+</div>
+<div class="flex flex-col lg:flex-row gap-12">
+<div class="lg:w-1/2 reveal">
+    
+<form id="contact-form" class="bg-gray-50 rounded-xl p-8 shadow-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<label for="name" class="block text-gray-700 font-medium mb-2">Nombre</label>
+<input type="text" id="name" name="name" class="w-full px-4 py-3 bg-white border border-gray-200 rounded focus:border-primary" placeholder="Tu nombre" required>
+</div>
+<div>
+<label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+<input type="email" id="email" name="email" class="w-full px-4 py-3 bg-white border border-gray-200 rounded focus:border-primary" placeholder="tu@email.com" required>
+</div>
+</div>
+<div class="mb-6">
+<label for="service" class="block text-gray-700 font-medium mb-2">Servicio de Interés</label>
+<div class="relative">
+<select id="service" name="service" class="w-full px-4 py-3 bg-white border border-gray-200 rounded focus:border-primary appearance-none pr-8">
+<option value="">Selecciona un servicio</option>
+<option value="design">Diseño Digital</option>
+<option value="web">Sitios Web y Hosting</option>
+<option value="auto">Automatizaciones</option>
+<option value="ai">Agentes Virtuales</option>
+<option value="other">Otro</option>
+</select>
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-500"></i>
+</div>
+</div>
+</div>
+<div class="mb-6">
+<label for="message" class="block text-gray-700 font-medium mb-2">Mensaje</label>
+<textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-white border border-gray-200 rounded focus:border-primary" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
+</div>
+<div class="mb-6 flex items-start gap-2">
+<input type="checkbox" id="privacy" name="privacy" class="custom-checkbox mt-1" required>
+<label for="privacy" class="text-gray-600 text-sm">
+Acepto la política de privacidad y el tratamiento de mis datos para recibir respuesta a mi solicitud.
+</label>
+</div>
+<button type="submit" class="w-full bg-primary hover:bg-purple-700 text-white font-medium py-3 px-6 !rounded-button shadow-lg hover:shadow-xl transition-all whitespace-nowrap" >
+Enviar Mensaje
+</button>
+</form>
+
+</div>
+<div class="lg:w-1/2 reveal">
+<div class="h-full flex flex-col justify-between">
+<div>
+<h3 class="text-2xl font-semibold text-gray-800 mb-6">Información de Contacto</h3>
+<div class="space-y-6 mb-8">
+    <div class="flex items-start gap-4">
+        <div
+            </div>
+        </div>
+        <div class="flex items-start gap-4">
+            <div class="w-10 h-10 flex items-center justify-center bg-purple-100 rounded-full text-primary">
+                <i class="ri-mail-line"></i>
+            </div>
+            <div>
+                <h4 class="font-medium text-gray-800 mb-1">Email</h4>
+                <a href="mailto:digitalsolutions1232@gmail.com" class="text-gray-600 hover:text-primary transition-colors">digitalsolutions1232@gmail.com</a>
+            </div>
+        </div>
+        <div class="flex items-start gap-4">
+            <div class="w-10 h-10 flex items-center justify-center bg-purple-100 rounded-full text-primary">
+                <i class="ri-phone-line"></i>
+            </div>
+            <div>
+                <h4 class="font-medium text-gray-800 mb-1">Teléfono</h4>
+                <a href="tel:+525512345678" class="text-gray-600 hover:text-primary transition-colors">+52 81 4793 1498</a>
+            </div>
+        </div>
+    </div>
+    
+    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Sígueme</h3>
+    <div class="flex gap-4 mb-8">
+        <a href="https://www.instagram.com/digitalsolutions_tam?igsh=bjR1c2N4dmdldnpo" class="w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-primary hover:text-white text-gray-600 rounded-full transition-colors">
+            <i class="ri-instagram-line"></i>
+        </a>
+        <a href="https://www.facebook.com/share/1Ad3KkhDzR/?mibextid=wwXIfr" class="w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-primary hover:text-white text-gray-600 rounded-full transition-colors">
+            <i class="ri-facebook-line"></i>
+        </a>
+        <a href="https://www.tiktok.com/@digitalsolutions__?_t=ZS-8wB73PtI1jc&_r=1" class="w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-primary hover:text-white text-gray-600 rounded-full transition-colors">
+            <i class="ri-tiktok-line"></i>
+        </a>
+    </div>
+    
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<div>
+<a href="#" class="font-['Pacifico'] text-3xl text-white mb-6 block">Angel Cruz | Digital Solutions</a>
+<p class="text-gray-400 mb-6">
+Transformando ideas en experiencias digitales excepcionales.
+</p>
+<div class="flex gap-4">
+<a href="https://www.instagram.com/digitalsolutions_tam?igsh=bjR1c2N4dmdldnpo" class="w-8 h-8 flex items-center justify-center bg-gray-800 hover:bg-primary text-gray-400 hover:text-white rounded-full transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="https://www.facebook.com/share/1Ad3KkhDzR/?mibextid=wwXIfr" class="w-8 h-8 flex items-center justify-center bg-gray-800 hover:bg-primary text-gray-400 hover:text-white rounded-full transition-colors">
+<i class="ri-facebook-line"></i>
+</a>
+<a href="https://www.tiktok.com/@digitalsolutions__?_t=ZS-8wB73PtI1jc&_r=1" class="w-8 h-8 flex items-center justify-center bg-gray-800 hover:bg-primary text-gray-400 hover:text-white rounded-full transition-colors">
+<i class="ri-tiktok-line"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Enlaces Rápidos</h4>
+<ul class="space-y-3">
+<li><a href="#inicio" class="text-gray-400 hover:text-white transition-colors">Inicio</a></li>
+<li><a href="#sobre-mi" class="text-gray-400 hover:text-white transition-colors">Sobre Mí</a></li>
+<li><a href="#servicios" class="text-gray-400 hover:text-white transition-colors">Servicios</a></li>
+<li><a href="#proyectos" class="text-gray-400 hover:text-white transition-colors">Proyectos</a></li>
+<li><a href="#contacto" class="text-gray-400 hover:text-white transition-colors">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Servicios</h4>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Diseño Digital</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Sitios Web y Hosting</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Automatizaciones</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Agentes Virtuales</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Consultoría Digital</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-6">Newsletter</h4>
+<p class="text-gray-400 mb-4">
+Suscríbete para recibir las últimas novedades y ofertas especiales.
+</p>
+<form class="flex mb-4">
+<input type="email" placeholder="Tu email" class="px-4 py-2 bg-gray-800 text-white border-none rounded-l-lg w-full focus:outline-none focus:ring-2 focus:ring-primary">
+<button type="submit" class="bg-primary hover:bg-purple-700 text-white px-4 py-2 rounded-r-lg whitespace-nowrap">
+Suscribir
+</button>
+</form>
+<div class="flex items-center gap-2 text-gray-400">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-shield-check-line"></i>
+</div>
+<span class="text-sm">Tu información está segura con nosotros.</span>
+</div>
+</div>
+</div>
+<hr class="border-gray-800 mb-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<div class="text-gray-500 text-sm mb-4 md:mb-0">
+&copy; 2025 Digital Solutions. Todos los derechos reservados..
+</div>
+<div class="flex gap-4 text-gray-500 text-sm">
+<a href="#" class="hover:text-white transition-colors">Términos y Condiciones</a>
+<span>|</span>
+<a href="#" class="hover:text-white transition-colors">Política de Privacidad</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Menú móvil
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+  mobileMenuButton.addEventListener("click", function () {
+    mobileMenu.classList.toggle("hidden");
+    if (mobileMenu.classList.contains("hidden")) {
+      mobileMenuButton.innerHTML = '<i class="ri-menu-line ri-lg"></i>';
+    } else {
+      mobileMenuButton.innerHTML = '<i class="ri-close-line ri-lg"></i>';
+    }
+  });
+  // Cerrar menú al hacer clic en un enlace
+  const mobileLinks = mobileMenu.querySelectorAll("a");
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      mobileMenu.classList.add("hidden");
+      mobileMenuButton.innerHTML = '<i class="ri-menu-line ri-lg"></i>';
+    });
+  });
+  // Scroll suave
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 80,
+          behavior: "smooth",
+        });
+      }
+    });
+  });
+  // Revelar elementos al hacer scroll
+  const revealElements = document.querySelectorAll(".reveal");
+  function checkReveal() {
+    const windowHeight = window.innerHeight;
+    const revealPoint = 150;
+    revealElements.forEach((element) => {
+      const elementTop = element.getBoundingClientRect().top;
+      if (elementTop < windowHeight - revealPoint) {
+        element.classList.add("active");
+      }
+    });
+  }
+  window.addEventListener("scroll", checkReveal);
+  checkReveal(); // Comprobar al cargar la página
+  // Filtros de proyectos
+  const projectFilters = document.querySelectorAll(".project-filter");
+  const projectCards = document.querySelectorAll(".project-card");
+  projectFilters.forEach((filter) => {
+    filter.addEventListener("click", function () {
+      // Actualizar botones activos
+      projectFilters.forEach((f) =>
+        f.classList.remove("active", "bg-primary", "text-white"),
+      );
+      projectFilters.forEach((f) => f.classList.add("text-gray-700"));
+      this.classList.add("active", "bg-primary", "text-white");
+      this.classList.remove("text-gray-700");
+      const filterValue = this.getAttribute("data-filter");
+      projectCards.forEach((card) => {
+        if (
+          filterValue === "all" ||
+          card.getAttribute("data-category") === filterValue
+        ) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+  // Copiar código promocional
+  const copyCodeButton = document.getElementById("copy-code");
+  const promoCode = document.getElementById("promo-code");
+  copyCodeButton.addEventListener("click", function () {
+    navigator.clipboard.writeText(promoCode.textContent);
+    const originalIcon = copyCodeButton.innerHTML;
+    copyCodeButton.innerHTML = '<i class="ri-check-line"></i>';
+    setTimeout(() => {
+      copyCodeButton.innerHTML = originalIcon;
+    }, 2000);
+  });
+ 
+  // Formulario de contacto
+  const contactForm = document.getElementById("contact-form");
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const service = document.getElementById("service").value;
+    const message = document.getElementById("message").value;
+    // Aquí normalmente enviarías los datos a un servidor
+    // Para este ejemplo, simularemos el envío a WhatsApp
+    const whatsappMessage = `Hola, soy ${name}. Email: ${email}. Estoy interesado en el servicio de ${service}. Mensaje: ${message}`;
+    const whatsappUrl = `https://wa.me/8147931498?text=${encodeURIComponent(whatsappMessage)}`;
+    // Mostrar mensaje de éxito
+    contactForm.innerHTML = `
+<div class="text-center py-8">
+<div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-check-line ri-2x text-green-500"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 mb-2">¡Mensaje Preparado!</h3>
+<p class="text-gray-600 mb-6">Porfavor da click en el boton de abajo para finalizar el mensaje.</p>
+<a href="${whatsappUrl}" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-button shadow-lg hover:shadow-xl transition-all flex items-center gap-2 justify-center whitespace-nowrap">
+<i class="ri-whatsapp-line"></i>
+<span>Continuar en WhatsApp</span>
+</a>
+</div>
+`;
+  });
+  // Cambio de tema (claro/oscuro)
+  const themeToggle = document.getElementById("theme-toggle");
+  themeToggle.addEventListener("change", function () {
+    // Esta funcionalidad requeriría implementación adicional con clases CSS
+    // o un framework como TailwindCSS con soporte para modo oscuro
+    console.log("Cambio de tema:", this.checked ? "oscuro" : "claro");
+  });
+});
+</script>
+</body>
+</html>
